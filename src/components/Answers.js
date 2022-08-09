@@ -10,9 +10,9 @@ const Answers = (props) => {
             <h2>Question Type</h2>
             <ul style={{width: "100%", listStyleType: "none", padding: "0px", margin: "0px"}}>
  
-            {props.question.options.map((answers, index) => {
+            {props.options.map((answers, index) => {
                 return (
-                <AnswerTiles key={index} answers={answers} correctAnswer={props.promptAnswer} answeredQuestion={props.answeredQuestion}/>
+                <AnswerTiles key={index} answers={answers} correctAnswer={props.promptAnswer}/>
             )})}
             </ul>
     </div>

@@ -17,7 +17,7 @@ const Body = () => {
 
     useEffect(() => {
         getSupabaseData();
-        console.log(supabaseQuestion);
+        console.log(supabaseQuestion.options);
     }, [])
 
     async function getSupabaseData () {
@@ -56,9 +56,8 @@ const Body = () => {
     return (
         <div className='container'>
             <div className='flashcard-grid'>
-                <div>{supabaseQuestion.prompt}</div>
-                {/* <Answers question={question} promptAnswer={promptAnswer} answeredQuesiton={answeredQuesiton}/>
-                <Question question={question} questionShuffle={questionShuffle} answeredQuesiton={answeredQuesiton}/> */}
+                <Answers question={supabaseQuestion.prompt} promptAnswer={supabaseQuestion.answer} options={supabaseQuestion.options}/>
+                <Question question={supabaseQuestion.prompt} />
             </div>
         </div>
     )
