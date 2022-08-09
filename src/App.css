@@ -71,6 +71,30 @@
   margin-bottom: 24px;
 }
 
+.tile .incorrect {
+  width: 100%;
+  min-height: 100px;
+  box-shadow: rgba(243, 36, 53, 0.61) 0px 7px 29px 0px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.tile .correct {
+  width: 100%;
+  min-height: 100px;
+  box-shadow: rgba(63, 241, 27, 0.651) 0px 7px 29px 0px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
 .footer {
   display: flex;
   height: 80px;

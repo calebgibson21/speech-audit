@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 const AnswerTiles = (props) => {
 
-  const {answers, correctAnswer, answeredQuestion} = props;
+  const {answers, correctAnswer, answered} = props;
 
 
 
@@ -14,10 +14,14 @@ const AnswerTiles = (props) => {
     }
   }
 
+  function userClickedTile() {
+    isCorrectAnswer();
+    answered()
+  }
 
 
   return (<>
-    <li className='tile' onClick={isCorrectAnswer}>
+    <li className="tile" onClick={userClickedTile}>
         <p>{props.answers}</p>
     </li>
   </>
