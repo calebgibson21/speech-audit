@@ -9,7 +9,7 @@ const Answers = (props) => {
 
             {props.options.map((answers, index) => {
                 return (
-                <AnswerTiles key={index} answers={answers} correctAnswer={props.promptAnswer} answered={props.answered}/>
+                <AnswerTiles key={index} answers={answers} correctAnswer={props.promptAnswer} answered={props.answered} isAnswered={props.isAnswered}/>
             )})}
             </ul>
     </div>

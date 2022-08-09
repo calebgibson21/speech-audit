@@ -71,7 +71,7 @@
   margin-bottom: 24px;
 }
 
-.tile .incorrect {
+.incorrect {
   width: 100%;
   min-height: 100px;
   box-shadow: rgba(243, 36, 53, 0.61) 0px 7px 29px 0px;
@@ -83,7 +83,7 @@
   margin-bottom: 24px;
 }
 
-.tile .correct {
+.correct {
   width: 100%;
   min-height: 100px;
   box-shadow: rgba(63, 241, 27, 0.651) 0px 7px 29px 0px;

@@ -68,6 +68,7 @@ const Body = () => {
                 promptAnswer={supabaseQuestion.answer} 
                 options={supabaseQuestion.options} 
                 answered={handleAnswerGiven}
+                isAnswered={answerGiven}
                />
             <Question 
                 question={supabaseQuestion.prompt} 
