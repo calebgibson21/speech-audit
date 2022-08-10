@@ -1,4 +1,3 @@
-import React from 'react';
 import AnswerTiles from './AnswerTiles';
 
 const Answers = (props) => {

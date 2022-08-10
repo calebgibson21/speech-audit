@@ -6,31 +6,30 @@ const AnswerTiles = (props) => {
   const [tileColor, setTileColor] = useState("rgba(100, 100, 111, 0.2) 0px 7px 29px 0px");
   const {answers, correctAnswer, answered, isAnswered} = props;
 
-  const colors = ['rgba(100, 100, 111, 0.2) 0px 7px 29px 0px', 'rgba(63, 241, 27, 0.651) 0px 7px 29px 0px', 'rgba(243, 36, 53, 0.61) 0px 7px 29px 0px']
+  const colors = ['rgba(100, 100, 111, 0.2) 0px 7px 29px 0px', 'rgba(63, 241, 27, 0.651) 0px 7px 29px 0px', 'rgba(243, 36, 53, 0.61) 0px 7px 29px 0px'];
 
+  function resetTileColor() {
+    setTileColor(colors[0])
+  }
  
-  useEffect(() => {
-    isCorrectTile();
-  }, [])
  
-  const renderTileColor = () => {
-    if (isAnswered){
+  async function renderTileColor ()  {
+    await isAnswered;
+    if (isAnswered === true) {
       if (correctTile) {
         const correctTileColor = colors[1];
-        setTileColor(correctTileColor);
+        return setTileColor(correctTileColor);
       }
       else {
         const incorrectTileColor = colors[2];
-        setTileColor(incorrectTileColor);
+        return setTileColor(incorrectTileColor);
       }
     }
     else {
       const unansweredTileColor = colors[0];
-      setTileColor(unansweredTileColor);
+      return setTileColor(unansweredTileColor);
     }
   }
-
-
 
 
   function isCorrectTile() {
@@ -55,6 +54,10 @@ const AnswerTiles = (props) => {
     renderTileColor();
   }
 
+  useEffect(() => {
+    isCorrectTile();
+    renderTileColor()
+  }, [isAnswered])
 
   return (<>
     <Tiles 
