@@ -4,11 +4,12 @@ import styled from 'styled-components';
 const AnswerTiles = (props) => {
   const [correctTile, setCorrectTile] = useState();
   const [tileColor, setTileColor] = useState("rgba(100, 100, 111, 0.2) 0px 7px 29px 0px");
-  const {answers, correctAnswer, answered, isAnswered} = props;
+  const {answers, correctAnswer, answered, isAnswered, handleNewPrompt} = props;
 
   const colors = ['rgba(100, 100, 111, 0.2) 0px 7px 29px 0px', 'rgba(63, 241, 27, 0.651) 0px 7px 29px 0px', 'rgba(243, 36, 53, 0.61) 0px 7px 29px 0px'];
 
-  function resetTileColor() {
+  async function resetTileColor() {
+    await handleNewPrompt
     setTileColor(colors[0])
   }
  

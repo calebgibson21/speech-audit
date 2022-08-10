@@ -12,6 +12,7 @@ const Body = () => {
     // const [question, setQuestion] = useState(getRandomQuestion());
     const [answerGiven, setAnswerGiven] = useState(false);
     const [supabaseQuestion, setSupabaseQuestion] = useState();
+    
 
 
     // const initialState = {
@@ -56,6 +57,11 @@ const Body = () => {
         setAnswerGiven(true);
     }
 
+    function handleNewPrompt () {
+        getSupabaseData();
+        setAnswerGiven(false);
+    }
+
 
     return (<>
         {supabaseQuestion &&
@@ -72,16 +78,21 @@ const Body = () => {
                                     answers={answers} 
                                     correctAnswer={supabaseQuestion.answer} 
                                     answered={handleAnswerGiven} 
-                                    isAnswered={answerGiven}/>
+                                    isAnswered={answerGiven}
+                                    handleNewPrompt={handleNewPrompt}/>
                             )})}
                         </ul>
                 </div>
-            <Question 
-                question={supabaseQuestion.prompt} 
-                shuffle={getSupabaseData} 
-                isAnswered={answerGiven}
-                />
-        </div>
+                <div className='grid-wrapper'>
+                    <h2>Prompt</h2>
+                    <div className='card'>
+                        {supabaseQuestion.prompt}
+                    </div>
+                    <button onClick={handleNewPrompt}>
+                        {answerGiven ? "Next Prompt" : "Shuffle Prompt"}
+                    </button>
+                </div>
+            </div>
         </div>
 }
         </>
