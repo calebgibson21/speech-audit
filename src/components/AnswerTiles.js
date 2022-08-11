@@ -13,7 +13,14 @@ const AnswerTiles = (props) => {
     setTileColor(colors[0])
   }
  
- 
+  function isCorrectTile() {
+    if (correctAnswer === answers) {
+      setCorrectTile(true)
+    } else {
+      setCorrectTile(false)
+    }
+  }
+
   async function renderTileColor ()  {
     await isAnswered;
     if (isAnswered === true) {
@@ -29,15 +36,6 @@ const AnswerTiles = (props) => {
     else {
       const unansweredTileColor = colors[0];
       return setTileColor(unansweredTileColor);
-    }
-  }
-
-
-  function isCorrectTile() {
-    if (correctAnswer === answers) {
-      setCorrectTile(true)
-    } else {
-      setCorrectTile(false)
     }
   }
 
@@ -59,6 +57,10 @@ const AnswerTiles = (props) => {
     isCorrectTile();
     renderTileColor()
   }, [isAnswered])
+
+  useEffect(() => {
+    isCorrectTile()
+  }, [])
 
   return (<>
     <Tiles 

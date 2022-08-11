@@ -32,6 +32,7 @@ const Body = () => {
     useRenderCounter('Body');
 
 
+    //fetches a random question from the database
     const getSupabaseData = async () => {
         const {data, error} = await supabaseClient
         .from("randomized_prompts")
@@ -42,8 +43,11 @@ const Body = () => {
         if (error) {
             console.error(error);
         }
+        console.log("Database info retrieved");
+        setAnswerGiven(false);
         return data;
        }
+       
 
 
        useEffect(() => {
@@ -59,7 +63,6 @@ const Body = () => {
 
     function handleNewPrompt () {
         getSupabaseData();
-        setAnswerGiven(false);
     }
 
 
