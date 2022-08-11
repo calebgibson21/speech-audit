@@ -1,7 +1,5 @@
-import React, {useEffect, useState, useReducer} from 'react';
+import React, {useEffect, useState} from 'react';
 import {supabaseClient} from '../lib/supabase';
-import Answers from './Answers';
-import Question from './Question';
 import useRenderCounter from '../hooks/renderCounter';
 import AnswerTiles from './AnswerTiles';
 
