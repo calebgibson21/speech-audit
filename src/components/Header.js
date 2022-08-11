@@ -1,5 +1,6 @@
 import '../App.css';
 import logo from '../images/flash-cards 1.png';
+import {Link} from 'react-router-dom';
 
 const Header = () => {
   return (<>
@@ -10,7 +11,9 @@ const Header = () => {
               <h1 style={{color: "#1161D4"}}>PM Flashcards</h1>
               <img src={logo} alt='flashcard-logo' style={{height: "100%"}}/>
             </div>
-            <h1>Other Copy</h1>
+            <Link to='/login'>
+              <h1>Other Copy</h1>
+            </Link>
           </div>
       </div>
   </div>

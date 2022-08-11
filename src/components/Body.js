@@ -91,7 +91,7 @@ const Body = () => {
                     <div className='card'>
                         {supabaseQuestion.prompt}
                     </div>
-                    <button onClick={handleNewPrompt}>
+                    <button className='button' onClick={handleNewPrompt}>
                         {answerGiven ? "Next Prompt" : "Shuffle Prompt"}
                     </button>
                 </div>

@@ -1,9 +1,8 @@
-import logo from './logo.svg';
+import {Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
-import Body from './components/Body';
-import Footer from './components/Footer';
 import useRenderCounter from './hooks/renderCounter';
+import Home from './pages/home';
+import Auth from './components/Auth';
 
 
 function App() {
@@ -13,9 +12,10 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <Header />
-        <Body />
-        <Footer />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="Login" element={<Auth />} />
+        </Routes>
       </div>
     </div>
   );
