@@ -20,14 +20,16 @@ const Header = () => {
   <div className='header'>
       <div className='container'>
           <div className='header-row'>
-            <div className='header-logo'>
+            <div>
+              <div className='header-logo'>
               <h1 style={{color: "#1161D4"}}>PM Flashcards</h1>
               <img src={logo} alt='flashcard-logo' style={{height: "100%"}}/>
+              </div>
+                <p>Welcome, {user?.id}!</p>
+              </div>
               <div>
           {/* Change it to display the user ID too 👇*/}
-          <p>Welcome, {user?.id}!</p>
-          <button onClick={handleSignOut}>Sign out</button>
-        </div>
+          <button className="button" onClick={handleSignOut}>Sign out</button>
       </div>
     </div>
   </div>

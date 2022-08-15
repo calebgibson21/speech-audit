@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const AnswerTiles = (props) => {
   const [correctTile, setCorrectTile] = useState();
   const [tileColor, setTileColor] = useState("rgba(100, 100, 111, 0.2) 0px 7px 29px 0px");
-  const {answers, correctAnswer, answered, isAnswered, handleNewPrompt} = props;
+  const {answers, correctAnswer, pendingAnswer, stillPending, handleNewPrompt} = props;
 
   const colors = ['rgba(100, 100, 111, 0.2) 0px 7px 29px 0px', 'rgba(63, 241, 27, 0.651) 0px 7px 29px 0px', 'rgba(243, 36, 53, 0.61) 0px 7px 29px 0px'];
 
@@ -22,8 +22,8 @@ const AnswerTiles = (props) => {
   }
 
   async function renderTileColor ()  {
-    await isAnswered;
-    if (isAnswered === true) {
+    await stillPending;
+    if (stillPending === false) {
       if (correctTile) {
         const correctTileColor = colors[1];
         return setTileColor(correctTileColor);
@@ -40,23 +40,23 @@ const AnswerTiles = (props) => {
   }
 
   function isCorrectAnswer() {
-    if (answers === correctAnswer) {
-      console.log("Correct!");
-    } else {
-      console.log("Incorrect :(");
-    }
+      if (answers === correctAnswer) {
+        console.log("Correct!");
+      } else {
+        console.log("Incorrect :(");
+    } 
   }
 
   function userClickedTile() {
     isCorrectAnswer();
-    answered()
+    pendingAnswer()
     renderTileColor();
   }
 
   useEffect(() => {
     isCorrectTile();
     renderTileColor()
-  }, [isAnswered])
+  }, [stillPending])
 
   useEffect(() => {
     isCorrectTile()
@@ -84,4 +84,5 @@ export const Tiles = styled.li`
     align-items: center;
     justify-content: center;
     margin-bottom: 24px;
-`
+    transition: all 0.15s ease-in-out;
+    `

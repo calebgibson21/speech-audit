@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import {supabaseClient} from '../lib/supabase';
 import useRenderCounter from '../hooks/renderCounter';
 import AnswerTiles from './AnswerTiles';
@@ -8,24 +8,15 @@ import AnswerTiles from './AnswerTiles';
 
 const Body = () => {
     // const [question, setQuestion] = useState(getRandomQuestion());
-    const [answerGiven, setAnswerGiven] = useState(false);
+    const [answerPending, setAnswerPending] = useState(true);
     const [supabaseQuestion, setSupabaseQuestion] = useState();
     
+    
 
-
-    // const initialState = {
-    //     answetGiven: false,
-    //     supabaseQuestion: {},
-    //     isFetched: false,
-    //     isAnswered: false,
-    //     answered: false,
-    //     correctAnswer: "",
-    //     options: [],
-    //     question: "",
-    //     promptAnswer: "",
-    //     isCorrectTile: false,
-    //     tileColor: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-    // }
+    const initialState = {
+        answerPending: true,
+        supabaseQuestion: {} 
+    }
 
     useRenderCounter('Body');
 
@@ -42,7 +33,7 @@ const Body = () => {
             console.error(error);
         }
         console.log("Database info retrieved");
-        setAnswerGiven(false);
+        setAnswerPending(true);
         return data;
        }
        
@@ -54,9 +45,9 @@ const Body = () => {
 
 
 
-    //if the question is answered, set the answerGiven to true
-    function handleAnswerGiven () {
-        setAnswerGiven(true);
+    //if the question is answered, set the answerPending to false
+    function handleAnswerPending () {
+        setAnswerPending(false);
     }
 
     function handleNewPrompt () {
@@ -68,7 +59,7 @@ const Body = () => {
         {supabaseQuestion &&
         <div className='container'>
             <div className='flashcard-grid'>
-                <div className='grid-wrapper'>
+                <div className='grid-wrapper-1'>
                     <h2>Question Type</h2>
                         <ul style={{width: "100%", listStyleType: "none", padding: "0px", margin: "0px"}}>
 
@@ -78,19 +69,19 @@ const Body = () => {
                                     key={index} 
                                     answers={answers} 
                                     correctAnswer={supabaseQuestion.answer} 
-                                    answered={handleAnswerGiven} 
-                                    isAnswered={answerGiven}
+                                    pendingAnswer={handleAnswerPending}
+                                    stillPending={answerPending}
                                     handleNewPrompt={handleNewPrompt}/>
                             )})}
                         </ul>
                 </div>
-                <div className='grid-wrapper'>
+                <div className='grid-wrapper-2'>
                     <h2>Prompt</h2>
                     <div className='card'>
                         {supabaseQuestion.prompt}
                     </div>
                     <button className='button' onClick={handleNewPrompt}>
-                        {answerGiven ? "Next Prompt" : "Shuffle Prompt"}
+                        {!answerPending ? "Next Prompt" : "Shuffle Prompt"}
                     </button>
                 </div>
             </div>
