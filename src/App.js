@@ -2,13 +2,10 @@ import {useEffect, useState} from 'react';
 import {Routes, Route } from 'react-router-dom';
 import './App.css';
 import { AuthProvider } from './components/Auth';
-import PrivateRoute from './components/privateRoute';
 import useRenderCounter from './hooks/renderCounter';
 import { supabaseClient } from './lib/supabase';
 import Home from './pages/home';
-import MockInterview from './pages/mock-interview';
-import SignIn from './pages/sign-in';
-import SignUp from './pages/sign-up';
+
 
 
 function App() {
