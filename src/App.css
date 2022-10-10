@@ -12,6 +12,7 @@
 
 .header {
   height: 80px;
+  width: 100%;
 }
 
 .header-row{
@@ -95,7 +96,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  font-size: 48px;
 }
 
 .tile {
@@ -147,6 +148,7 @@
 
 .button {
   width: 100%;
+  max-width: 320px;
   height: 40px;
   border-radius: 10px;
   border: none;
@@ -168,3 +170,182 @@
     background-color: #0b4392;
     transition: ease-in-out 0.2s all;
   }
+
+
+  .expired-notice {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid #ebebeb;
+    border-radius: 0.25rem;
+    margin: 0.5rem;
+  }
+  
+  .expired-notice > span {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: red;
+  }
+  
+  .expired-notice > p {
+    font-size: 1.5rem;
+  }
+  
+  .show-counter {
+    padding: 0.5rem;
+  }
+  
+  .show-counter .countdown-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding: 0.5rem;
+    border: 1px solid #ebebeb;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .show-counter .countdown {
+    line-height: 1.25rem;
+    padding: 0 0.75rem 0 0.75rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .show-counter .countdown.danger {
+    color: #ff0000;
+  }
+  
+  .show-counter .countdown > p {
+    margin: 0;
+  }
+  
+  .show-counter .countdown > span {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .RSPBprogressBar {
+    height: 10px;
+    line-height: 1;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgba(211, 211, 211, 0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 0;
+ }
+  .RSPBprogressBar .RSPBstep {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    position: absolute;
+    transform: translateX(-50%);
+    transition-property: all;
+    transition-timing-function: ease;
+ }
+  .RSPBprogressBar .RSPBprogressBarText {
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+  .RSPBprogressBar .RSPBprogression {
+    position: absolute;
+    transition: width 0.3s ease;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px;
+    background: rgba(0, 116, 217, 0.8);
+    z-index: -1;
+ }
+
+.timer-controller-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0px;
+}
+.timer-controller-wrapper *, .timer-controller-wrapper *::before, .timer-controller-wrapper *::after {
+  box-sizing: border-box;
+}
+.timer-controller-wrapper .timer-display {
+  background: linear-gradient(-135deg, #0048ce, #008bfd);
+  padding: 40px 0;
+  font-family: "Roboto mono", monospace;
+  color: #fff;
+  font-size: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 6rem;
+}
+.timer-controller-wrapper .buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+}
+@media (min-width: 450px) {
+  .timer-controller-wrapper .buttons-wrapper {
+    width: 90%;
+ }
+}
+.timer-controller-wrapper .buttons-wrapper .timer-controller-btn {
+  padding: 10px 15px;
+  background-color: #fff;
+  color: #141313;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+  border-radius: 5px;
+  letter-spacing: 0.02857em;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  box-shadow: 0px 3px 1px -2px #000, 0px 2px 2px 0px #000, 0px 1px 5px 0px #000;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.timer-controller-wrapper .buttons-wrapper .timer-controller-btn:hover {
+  box-shadow: 0px 2px 4px -1px #000, 0px 4px 5px 0px #000, 0px 1px 10px 0px #000;
+}
+.timer-controller-wrapper .buttons-wrapper .timer-controller-btn.danger {
+  color: #fff;
+  background-color: #dc004e;
+}
+.timer-controller-wrapper .buttons-wrapper .timer-controller-btn.danger:hover:enabled {
+  background-color: #9a0036;
+}
+.timer-controller-wrapper .buttons-wrapper .timer-controller-btn.disabled {
+  color: rgba(0, 0, 0, 0.26);
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.12);
+  cursor: not-allowed;
+}
+
+.wrapper-class {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+.editor-class {
+  background-color:lightgray;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+.toolbar-class {
+  border: 1px solid #ccc;
+}

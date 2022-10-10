@@ -6,6 +6,7 @@ import PrivateRoute from './components/privateRoute';
 import useRenderCounter from './hooks/renderCounter';
 import { supabaseClient } from './lib/supabase';
 import Home from './pages/home';
+import MockInterview from './pages/mock-interview';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
 
@@ -30,13 +31,14 @@ function App() {
       <div className="App-header">
         <AuthProvider>
           <Routes>
-            <Route path='/' element={
-              <PrivateRoute >
+            /* <Route path='/' element={
+             
                   <Home />
-                </PrivateRoute>
-            } />
-            <Route path="Login" element={<SignIn />} />
-            <Route path="SignUp" element={<SignUp />} />
+                
+            } /> 
+            {/* <Route path="Login" element={<SignIn />} />
+            <Route path="SignUp" element={<SignUp />} /> */}
+            {/* <Route path="/" element={<MockInterview />} /> */}
           </Routes>
         </AuthProvider>
       </div>

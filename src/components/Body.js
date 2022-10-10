@@ -2,6 +2,8 @@ import React, {useEffect, useState, useReducer} from 'react';
 import {supabaseClient} from '../lib/supabase';
 import useRenderCounter from '../hooks/renderCounter';
 import AnswerTiles from './AnswerTiles';
+import TimerController from '../pages/mock-interview';
+import styled from 'styled-components';
 
 
 
@@ -92,3 +94,5 @@ const Body = () => {
     }
 
 export default Body
+
+
