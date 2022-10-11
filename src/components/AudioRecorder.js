@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import { useReactMediaRecorder } from "react-media-recorder";
 import styled from 'styled-components';
+import { AuthProvider } from './Auth';
 
 
 const AudioRecorder = (props) => {
@@ -8,6 +9,7 @@ const AudioRecorder = (props) => {
     const [minute, setMinute] = useState(0o0);
     const [isActive, setIsActive] = useState(false);
     const [counter, setCounter] = useState(0);
+    const [mediaBlob, setMediaBlob] = useState(null)
 
 
   useEffect(() => {
@@ -83,17 +85,12 @@ const AudioRecorder = (props) => {
         >
           {status}
         </h4>
-      <div style={{ height: "38px" }}>
-        {" "}
-        <video src={mediaBlobUrl} controls loop />
-      </div>
-
       <div
         className="col-md-6 col-md-offset-3"
         style={{
           backgroundColor: "black",
           color: "white",
-          marginLeft: "357px"
+          margin: "0 auto"
         }}
       >
         <button
@@ -106,13 +103,13 @@ const AudioRecorder = (props) => {
         >
           Clear
         </button>
-        <div style={{ marginLeft: "70px", fontSize: "54px" }}>
+        <div style={{ fontSize: "54px" }}>
           <span className="minute">{minute}</span>
           <span>:</span>
           <span className="second">{second}</span>
         </div>
 
-        <div style={{ marginLeft: "20px", display: "flex" }}>
+        <div style={{ display: "flex", justifyContent: "center"}}>
           <label
             style={{
               fontSize: "15px",
@@ -174,10 +171,14 @@ const AudioRecorder = (props) => {
               >
                 Stop
               </button>
+              <audio
+              controls
+              src={mediaBlobUrl}>
+                Audio
+              </audio>
             </div>
           </label>
         </div>
-        <b></b>
       </div>
     </RecorderContainer>
   );
@@ -185,9 +186,9 @@ const AudioRecorder = (props) => {
 export default AudioRecorder;
 
 export const RecorderContainer = styled.div`
-    border: "1px solid black";
-    background-color: "black";
-    width: "700px";
-    height: "350px";
-    margin: "0 auto;
+    border: 1px solid black;
+    background-color: black;
+    width: 700px;
+    height: 350px;
+    margin: 0 auto;
 `
