@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useReactMediaRecorder } from "react-media-recorder";
+import styled from 'styled-components';
 
 
 const AudioRecorder = (props) => {
@@ -30,7 +31,7 @@ const AudioRecorder = (props) => {
         setMinute(computedMinute);
 
         setCounter((counter) => counter + 1);
-      }, 650);
+      }, 1000);
     }
 
     return () => clearInterval(intervalId);
@@ -70,22 +71,7 @@ const AudioRecorder = (props) => {
     });
 
   return (
-    <div
-      style={{
-        border: "1px solid black",
-        backgroundColor: "black",
-        width: "700px",
-        height: "350px"
-      }}
-    >
-      <div
-        style={{
-          border: "1px solid #bd9f61",
-          height: "70px",
-          backgroundColor: "#bd9f61",
-          display: "flex"
-        }}
-      >
+    <RecorderContainer>
         <h4
           style={{
             marginLeft: "10px",
@@ -97,7 +83,6 @@ const AudioRecorder = (props) => {
         >
           {status}
         </h4>
-      </div>
       <div style={{ height: "38px" }}>
         {" "}
         <video src={mediaBlobUrl} controls loop />
@@ -194,7 +179,15 @@ const AudioRecorder = (props) => {
         </div>
         <b></b>
       </div>
-    </div>
+    </RecorderContainer>
   );
 };
 export default AudioRecorder;
+
+export const RecorderContainer = styled.div`
+    border: "1px solid black";
+    background-color: "black";
+    width: "700px";
+    height: "350px";
+    margin: "0 auto;
+`
