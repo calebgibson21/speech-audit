@@ -5,8 +5,8 @@ import { AuthProvider } from './Auth';
 
 
 const AudioRecorder = (props) => {
-    const [second, setSecond] = useState(0o0);
-    const [minute, setMinute] = useState(0o0);
+    const [second, setSecond] = useState("00");
+    const [minute, setMinute] = useState("00");
     const [isActive, setIsActive] = useState(false);
     const [counter, setCounter] = useState(0);
     const [mediaBlob, setMediaBlob] = useState(null)
@@ -57,7 +57,7 @@ const AudioRecorder = (props) => {
     audio: true,
     echoCancellation: true
   });
-  console.log("deed", mediaBlobUrl);
+  console.log("deed", status, mediaBlobUrl);
 
   const convertFileToBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -86,23 +86,8 @@ const AudioRecorder = (props) => {
           {status}
         </h4>
       <div
-        className="col-md-6 col-md-offset-3"
-        style={{
-          backgroundColor: "black",
-          color: "white",
-          margin: "0 auto"
-        }}
+        className="timer-controller-wrapper"
       >
-        <button
-          style={{
-            backgroundColor: "black",
-            borderRadius: "8px",
-            color: "white"
-          }}
-          onClick={stopTimer}
-        >
-          Clear
-        </button>
         <div style={{ fontSize: "54px" }}>
           <span className="minute">{minute}</span>
           <span>:</span>
@@ -122,12 +107,11 @@ const AudioRecorder = (props) => {
               Press the Start to record
             </h3>
 
-            <div>
+            <div style={{ display: "flex", justifyContent: "center", flexDirection: "column"}}>
               <button
                 style={{
                   padding: "0.8rem 2rem",
                   border: "none",
-                  marginLeft: "15px",
                   fontSize: "1rem",
                   cursor: "pointer",
                   borderRadius: "5px",
@@ -154,7 +138,6 @@ const AudioRecorder = (props) => {
                   padding: "0.8rem 2rem",
                   border: "none",
                   backgroundColor: "#df3636",
-                  marginLeft: "15px",
                   fontSize: "1rem",
                   cursor: "pointer",
                   color: "white",
@@ -171,6 +154,16 @@ const AudioRecorder = (props) => {
               >
                 Stop
               </button>
+              <button
+          style={{
+            backgroundColor: "black",
+            borderRadius: "8px",
+            color: "white"
+          }}
+          onClick={stopTimer}
+        >
+          Clear
+        </button>
               <audio
               controls
               src={mediaBlobUrl}>
@@ -186,9 +179,7 @@ const AudioRecorder = (props) => {
 export default AudioRecorder;
 
 export const RecorderContainer = styled.div`
-    border: 1px solid black;
-    background-color: black;
-    width: 700px;
+    max-width: 700px;
     height: 350px;
     margin: 0 auto;
 `

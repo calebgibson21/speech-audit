@@ -4,6 +4,7 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import MyEditor from "../components/TextEditor"
 import TimerController from "./mock-interview"
+import Prompt from "../components/prompt"
 // import { useAuth } from "../components/Auth";
 // import { useNavigate } from "react-router-dom";
 
@@ -25,9 +26,10 @@ const Home = () => {
   return (
     <>
         <Header/>
-        <TimerController />
+        <Prompt />
+        {/* <TimerController /> */}
         <AudioRecorder />
-        <MyEditor />
+        {/* <MyEditor /> */}
         <Footer />
     </>
   )
